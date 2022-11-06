@@ -22,10 +22,10 @@
       TODO: Eine eigene style.css erstellen, die importieren und die dinge von unten in der style.css packen
       TODO: Die bilder sollten nicht gehosted sein (sonst könnten die ja irgendwann ablaufen), sondern ein eigener folder mit den dateien, aber bei mir hat
       der File Link nicht funktioniert.
-      TODO: Schöneres Design. Farben/Formen/Schriftarten
-      TODO PHILIPP: Funktionalität für Drag And Drop erweiter
+      TODO: Schöneres Design. Hintergrund? Farben waren so ok bisher glaube ich.
       TODO: Das ist ja eigentlich nicht zahlenstrahl, sondern Punktfelder, dass in Git fixen am besten;
-      TODO: Richtige Anordnung von den Elementen im Drop Feld.
+      TODO PHILIPP: Button erstellen zum überprüfen
+      TODO: Funktionalität, dass man auch elemente wieder löschen kann aus der linken seite.
     -->
     <style>
       .hundreds {
@@ -34,8 +34,19 @@
         background-size: 225px;
         height: 225px;
         width: 225px;
-        top: 100px;
-        left: 200px;
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+      }
+
+      .hundreds-resized {
+        background-image: url("https://i.imgur.com/2l23vHF.jpg");
+        position: relative;
+        height: 150px;
+        width: 150px;
+        background-size: 100px;
+        top: 25px;
+        left: 25px;
         cursor: pointer;
       }
 
@@ -45,24 +56,72 @@
         background-size: 225px;
         height: 25px;
         width: 225px;
-        top: 200px;
-        left: 150px;
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+      }
+
+      .tens-resized {
+        background-image: url("https://i.imgur.com/uw4em2D.jpg");
+        position: relative;
+        background-size: 175px;
+        height: 20px;
+        width: 175px;
+        top: 20px;
+        left: 20px;
         cursor: pointer;
       }
 
       .ones {
         background-image: url("https://i.imgur.com/m9p9ENT.jpg");
         position: relative;
-        background-size: 25px;
-        height: 25px;
-        width: 25px;
-        top: 300px;
-        left: 300px;
+        background-size: 20px;
+        height: 20px;
+        width: 20px;
+        top: 20px;
+        left: 20px;
         cursor: pointer;
       }
 
       .container {
         max-width: 1800px;
+      }
+
+      .row-one {
+        height: 160px;
+        width: 1000px;
+        padding: 25px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .row-two {
+        height: 250px;
+        width: 1000px;
+        padding: 25px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .row-three {
+        height: 100px;
+        width: 1000px;
+        padding: 25px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .row-four {
+        height: 100px;
+        width: 1000px;
+        padding: 25px;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .row-five {
+        height: 160px;
+        width: 1000px;
+        padding: 25px;
+        display: flex;
+        justify-content: space-around;
       }
 
       .col-4 {
@@ -77,11 +136,12 @@
       }
 
       .count-field {
-        display: inline-block;
         height: 800px;
-        width: 1000px;
+        width: 1100px;
         border: 10px salmon solid;
         background-color: #bcfdff;
+        padding-top: 10px;
+        padding-right: 50px;
       }
 
       .hold {
@@ -96,23 +156,59 @@
         font-weight: normal;
         font-style: normal;
       }
+      .right-row-one {
+        height: 300px;
+        width: 400px;
+        padding: 25px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .right-row-two {
+        height: 100px;
+        width: 400px;
+        padding: 25px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .right-row-three {
+        height: 310px;
+        width: 400px;
+        padding: 25px;
+        display: flex;
+        justify-content: space-around;
+      }
     </style>
     <h1 style="background-color: #00868b">Punktfelder!</h1>
     <div class="container text-center">
       <div class="row">
         <div class="col-8">
-          <h2>Hier Rein!</h2>
-          <div class="count-field"></div>
+          <h2 id="exercise"></h2>
+          <div class="count-field">
+            <div class="row-one"></div>
+            <div class="row-two"></div>
+            <div class="row-three"></div>
+            <div class="row-four"></div>
+            <div class="row-five"></div>
+          </div>
         </div>
-
         <div class="col-4">
           <h2>Verfügbare Zahlenfelder!</h2>
-          <div class="hundreds" draggable="true"></div>
-          <div class="tens" draggable="true"></div>
-          <div class="ones" draggable="true"></div>
+          <div class="row justify-content-center">
+            <div class="right-row-one">
+              <div class="hundreds" draggable="true"></div>
+            </div>
+            <div class="right-row-two">
+              <div class="tens" draggable="true"></div>
+            </div>
+            <div class="right-row-three">
+              <div class="ones" draggable="true"></div>
+            </div>
+          </div>
+          <h2 id="display-number"></h2>
         </div>
       </div>
     </div>
   </body>
+
   <script type="module" src="/static/js/index.js"></script>
 </html>

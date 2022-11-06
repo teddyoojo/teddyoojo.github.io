@@ -1,10 +1,30 @@
+//#region constants and variables
 var hundreds = document.querySelector('.hundreds');
 const tens = document.querySelector('.tens');
 const ones = document.querySelector('.ones');
 const countField = document.querySelector('.count-field');
 const columnTwo = document.querySelector('.col-4');
+const rowOne = document.querySelector('.row-one');
+const rowTwo = document.querySelector('.row-two');
+const rowThree = document.querySelector('.row-three');
+const rowFour = document.querySelector('.row-four');
+const rowFive = document.querySelector('.row-five');
 var currentlyDragged;
-enableHundreds();
+var hundredCounter = 0;
+var tensCounter = 0;
+var onesCounter = 0;
+var totalNumber = 0;
+//#endregion
+
+window.onload = function() {
+    var randomNumber =  Math.floor(Math.random() * 1000);
+    const exercise = "Bitte geben sie folgende Zahl mit den Zahlenfeldern an: " + randomNumber;
+    document.getElementById('exercise').innerHTML = exercise;
+    document.getElementById('display-number').innerHTML = "Die angegebene Zahl ist: 0";
+}
+hundreds.addEventListener('dragstart', dragStartHundreds);
+hundreds.addEventListener('dragend', dragEndHundreds);
+
 tens.addEventListener('dragstart', dragStartTens);
 tens.addEventListener('dragend', dragEndTens);
 
@@ -40,7 +60,7 @@ function dragStartOnes() {
     currentlyDragged = ones;
 }
 
-function dragEndOnes() {
+function dragEndOnes(e) {
     this.className = 'ones';
 }
 
@@ -58,23 +78,39 @@ function dragLeave() {
 }
 
 function dragDrop() {
-    console.log(hundreds);
-    this.className = 'count-field';
-    countField.append(currentlyDragged);
-    currentlyDragged.setAttribute("draggable", "false");
-    console.log(hundreds);
-    if(currentlyDragged === hundreds) {
-        var tag = document.createElement("div");
-        tag.classList.add("hundreds");
-        tag.setAttribute("draggable", "true");
-        hundreds = tag;
-        columnTwo.append(tag);
+    switch(currentlyDragged) {
+        case hundreds:
+            var tag = document.createElement("div");
+            tag.classList.add("hundreds-resized")
+            if(hundredCounter < 5) {
+                rowOne.append(tag);  
+            } else if (hundredCounter < 10) {
+                rowTwo.append(tag);
+            }
+            hundredCounter++;
+            break;
+        case tens:
+            var tag = document.createElement("div");
+            tag.classList.add("tens-resized");
+            if(tensCounter < 5) {
+                rowThree.append(tag);
+            } else if(tensCounter < 10) {
+                rowFour.append(tag);
+            }
+            tensCounter++;
+            break;
+        case ones:
+            if(onesCounter < 10) {
+                var tag = document.createElement("div");
+                tag.classList.add("ones");
+                rowFive.append(tag);
+            }
+            onesCounter++;
+            break;
+        default: 
+            break;
     }
-    enableHundreds();
-    console.log(hundreds);
-}
-
-function enableHundreds() {
-    hundreds.addEventListener('dragstart', dragStartHundreds);
-    hundreds.addEventListener('dragend', dragEndHundreds);
+    totalNumber = hundredCounter * 100 + tensCounter*10 + onesCounter;
+    const displayText = "Die angegebene Zahl " + totalNumber;
+    document.getElementById('display-number').innerHTML = displayText;
 }
