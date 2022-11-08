@@ -14,13 +14,13 @@ var hundredCounter = 0;
 var tensCounter = 0;
 var onesCounter = 0;
 var totalNumber = 0;
+var randomNumber = 0;
+var solutionIsCorrect;
 //#endregion
 
 window.onload = function() {
-    var randomNumber =  Math.floor(Math.random() * 1000);
-    const exercise = "Bitte geben sie folgende Zahl mit den Zahlenfeldern an: " + randomNumber;
-    document.getElementById('exercise').innerHTML = exercise;
-    document.getElementById('display-number').innerHTML = "Die angegebene Zahl ist: 0";
+    randomNumber =  Math.floor(Math.random() * 1000);
+    document.getElementById('exercise').innerHTML = "Bitte geben sie folgende Zahl mit den Zahlenfeldern an: " + randomNumber;
 }
 hundreds.addEventListener('dragstart', dragStartHundreds);
 hundreds.addEventListener('dragend', dragEndHundreds);
@@ -83,34 +83,87 @@ function dragDrop() {
             var tag = document.createElement("div");
             tag.classList.add("hundreds-resized")
             if(hundredCounter < 5) {
-                rowOne.append(tag);  
-            } else if (hundredCounter < 10) {
+                rowOne.append(tag); 
+                hundredCounter++; 
+            } else if (hundredCounter < 9) {
                 rowTwo.append(tag);
+                hundredCounter++;
             }
-            hundredCounter++;
             break;
         case tens:
             var tag = document.createElement("div");
             tag.classList.add("tens-resized");
             if(tensCounter < 5) {
                 rowThree.append(tag);
-            } else if(tensCounter < 10) {
+                tensCounter++;
+            } else if(tensCounter < 9) {
                 rowFour.append(tag);
+                tensCounter++;
             }
-            tensCounter++;
             break;
         case ones:
-            if(onesCounter < 10) {
+            if(onesCounter < 9) {
                 var tag = document.createElement("div");
                 tag.classList.add("ones");
                 rowFive.append(tag);
+                onesCounter++;
             }
-            onesCounter++;
             break;
         default: 
             break;
     }
     totalNumber = hundredCounter * 100 + tensCounter*10 + onesCounter;
-    const displayText = "Die angegebene Zahl " + totalNumber;
-    document.getElementById('display-number').innerHTML = displayText;
+    console.log(totalNumber);
+    console.log(randomNumber);
+}
+
+function submitBtnClicked() {
+    var solutionText = "";
+    document.getElementById("myModal").style.display = "block";
+    if(totalNumber === randomNumber) {
+        solutionText = "Das ist richtig :)";
+        document.getElementById("closeBtn").innerHTML = "Nächste Aufgabe!";
+        solutionIsCorrect = true;
+    } else {
+        solutionText = "Das ist leider falsch :(";
+        document.getElementById("closeBtn").innerHTML = "Nochmal probieren";
+        solutionIsCorrect = false;
+    }
+    document.getElementById("solution").innerHTML = solutionText;
+}
+
+function closeModal() {
+    console.log(solutionIsCorrect); 
+    if(solutionIsCorrect) {
+        window.location.reload();
+    } else {
+        document.getElementById("myModal").style.display = "none";
+        clearCountField();
+    }
+}
+
+function refreshBtnClicked() {
+    window.location.reload();
+}
+
+function clearCountField() {
+    while(rowOne.firstChild) {
+        rowOne.removeChild(rowOne.lastChild);
+    }
+    while(rowTwo.firstChild) {
+        rowTwo.removeChild(rowTwo.lastChild);
+    }
+    while(rowThree.firstChild) {
+        rowThree.removeChild(rowThree.lastChild);
+    }
+    while(rowFour.firstChild) {
+        rowFour.removeChild(rowFour.lastChild);
+    }
+    while(rowFive.firstChild) {
+        rowFive.removeChild(rowFive.lastChild);
+    }
+    totalNumber = 0;
+    hundredCounter = 0;
+    tensCounter = 0;
+    onesCounter = 0;
 }
