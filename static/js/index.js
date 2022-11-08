@@ -20,7 +20,7 @@ var solutionIsCorrect;
 
 window.onload = function() {
     randomNumber =  Math.floor(Math.random() * 1000);
-    document.getElementById('exercise').innerHTML = "Bitte geben sie folgende Zahl mit den Zahlenfeldern an: " + randomNumber + "   "+"<button class=\"btn btn-info\" onClick=\"playSound()\"><i class=\"bi bi-volume-up\"></i></button>";
+    document.getElementById('exercise').innerHTML = "Bitte geben Sie die folgende Zahl mit den Zahlenfeldern an: " + randomNumber + "   "+"<button class=\"btn btn-info\" onClick=\"playSound()\"><i class=\"bi bi-volume-up\"></i></button>";
 }
 hundreds.addEventListener('dragstart', dragStartHundreds);
 hundreds.addEventListener('dragend', dragEndHundreds);
