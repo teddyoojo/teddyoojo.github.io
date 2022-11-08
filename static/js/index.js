@@ -20,7 +20,7 @@ var solutionIsCorrect;
 
 window.onload = function() {
     randomNumber =  Math.floor(Math.random() * 1000);
-    document.getElementById('exercise').innerHTML = "Bitte geben sie die folgende Zahl mit den Zahlenfeldern an: " + randomNumber;
+    document.getElementById('exercise').innerHTML = "Bitte geben sie folgende Zahl mit den Zahlenfeldern an: " + randomNumber + "   "+"<button class=\"btn btn-info\" onClick=\"playSound()\"><i class=\"bi bi-volume-up\"></i></button>";
 }
 hundreds.addEventListener('dragstart', dragStartHundreds);
 hundreds.addEventListener('dragend', dragEndHundreds);
@@ -166,4 +166,12 @@ function clearCountField() {
     hundredCounter = 0;
     tensCounter = 0;
     onesCounter = 0;
+}
+
+function playSound() {
+    var msg = new SpeechSynthesisUtterance();
+    msg.text = randomNumber;
+    msg.volume = 0.5;
+    msg.lang = 'de-at';
+    window.speechSynthesis.speak(msg);
 }
