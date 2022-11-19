@@ -16,11 +16,13 @@ var onesCounter = 0;
 var totalNumber = 0;
 var randomNumber = 0;
 var solutionIsCorrect;
+var elementsDragged = 0;
+var selectedRow = rowOne;
 //#endregion
 
 window.onload = function() {
     randomNumber =  Math.floor(Math.random() * 1000);
-    document.getElementById('exercise').innerHTML = "Bitte geben Sie die folgende Zahl mit den Zahlenfeldern an: " + randomNumber + "   "+"<button class=\"btn btn-info\" onClick=\"playSound()\"><i class=\"bi bi-volume-up\"></i></button>";
+    document.getElementById('exercise').innerHTML = "Stelle die Zahl " + randomNumber + " dar   "+"<button class=\"btn\" style=\"background-color:#00868b\" onClick=\"playSound()\"><i class=\"bi bi-mic-fill\"></i></button><button class=\"btn btn-danger\" onClick=\"deleteLast()\">Letzte Eingabe löschen</button>";
 }
 hundreds.addEventListener('dragstart', dragStartHundreds);
 hundreds.addEventListener('dragend', dragEndHundreds);
@@ -78,43 +80,42 @@ function dragLeave() {
 }
 
 function dragDrop() {
+    if(elementsDragged < 5) { 
+        selectedRow = rowOne 
+    } else if(elementsDragged < 10) {
+        selectedRow = rowTwo;
+    } else if(elementsDragged < 15) {
+        selectedRow = rowThree;
+    } else if(elementsDragged < 20) {
+        selectedRow = rowFour;
+    } else if(elementsDragged < 25) {
+        selectedRow = rowFive;
+    }
     switch(currentlyDragged) {
         case hundreds:
             var tag = document.createElement("div");
             tag.classList.add("hundreds-resized")
-            if(hundredCounter < 5) {
-                rowOne.append(tag); 
-                hundredCounter++; 
-            } else if (hundredCounter < 9) {
-                rowTwo.append(tag);
-                hundredCounter++;
-            }
+            selectedRow.append(tag);
+            hundredCounter++;
             break;
         case tens:
             var tag = document.createElement("div");
             tag.classList.add("tens-resized");
-            if(tensCounter < 5) {
-                rowThree.append(tag);
-                tensCounter++;
-            } else if(tensCounter < 9) {
-                rowFour.append(tag);
-                tensCounter++;
-            }
+            selectedRow.append(tag);
+            tensCounter++;
             break;
         case ones:
-            if(onesCounter < 9) {
-                var tag = document.createElement("div");
-                tag.classList.add("ones");
-                rowFive.append(tag);
-                onesCounter++;
-            }
+            var tag = document.createElement("div");
+            tag.classList.add("ones");
+            selectedRow.append(tag);
+            onesCounter++;
             break;
         default: 
             break;
     }
+    elementsDragged++;
+    console.log(elementsDragged);
     totalNumber = hundredCounter * 100 + tensCounter*10 + onesCounter;
-    console.log(totalNumber);
-    console.log(randomNumber);
 }
 
 function submitBtnClicked() {
@@ -125,7 +126,8 @@ function submitBtnClicked() {
         document.getElementById("closeBtn").innerHTML = "Nächste Aufgabe!";
         solutionIsCorrect = true;
     } else {
-        solutionText = "Das ist leider falsch :(";
+        solutionText = "Du hast " + hundredCounter + " Hunderter, " + tensCounter + " Zehner und " + onesCounter + " Einer genommen und die Zahl " + totalNumber +
+        " dargestellt. Du solltest aber die Zahl " + randomNumber + " darstellen. Versuch es noch einmal.";
         document.getElementById("closeBtn").innerHTML = "Nochmal probieren";
         solutionIsCorrect = false;
     }
@@ -174,4 +176,23 @@ function playSound() {
     msg.volume = 0.5;
     msg.lang = 'de-at';
     window.speechSynthesis.speak(msg);
+}
+
+function deleteLast() {
+    if(elementsDragged > 0) {
+        var removedElement = selectedRow.removeChild(selectedRow.lastChild);
+        elementsDragged--;
+        console.log(removedElement);
+        switch(removedElement) {
+            case document.getElementsByClassName('hundreds-resized'):
+                hundredCounter--;
+                break;
+            case document.getElementsByClassName('tens-resized'):
+                tensCounter--;
+                break;
+            case document.getElementsByClassName('ones'):
+                onesCounter--;
+                break;
+        }
+    }
 }
