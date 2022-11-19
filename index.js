@@ -141,6 +141,7 @@ function closeModal() {
     } else {
         document.getElementById("myModal").style.display = "none";
         clearCountField();
+        elementsDragged = 0;
     }
 }
 
