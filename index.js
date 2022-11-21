@@ -81,16 +81,19 @@ function dragLeave() {
 
 function dragDrop() {
     if(elementsDragged < 5) { 
-        selectedRow = rowOne 
+        addToCountField(rowOne)
     } else if(elementsDragged < 10) {
-        selectedRow = rowTwo;
+        addToCountField(rowTwo)
     } else if(elementsDragged < 15) {
-        selectedRow = rowThree;
+        addToCountField(rowThree)
     } else if(elementsDragged < 20) {
-        selectedRow = rowFour;
+        addToCountField(rowFour)
     } else if(elementsDragged < 25) {
-        selectedRow = rowFive;
+        addToCountField(rowFive)
     }
+}
+
+function addToCountField(selectedRow) {
     switch(currentlyDragged) {
         case hundreds:
             var tag = document.createElement("div");
