@@ -14,15 +14,37 @@ var hundredCounter = 0;
 var tensCounter = 0;
 var onesCounter = 0;
 var totalNumber = 0;
-var randomNumber = 0;
+var randomNumber1 = 0;
+var randomNumber2 = 0;
+var exercise = 0;
 var solutionIsCorrect;
 var elementsDragged = 0;
 var selectedRow = rowOne;
 //#endregion
 
 window.onload = function() {
-    randomNumber =  Math.floor(Math.random() * 1000);
-    document.getElementById('exercise').innerHTML = "Stelle die Zahl " + randomNumber + " dar   "+"<button class=\"btn\" style=\"background-color:#00868b\" onClick=\"playSound()\"><i class=\"bi bi-mic-fill\"></i></button><button class=\"btn btn-danger\" onClick=\"deleteLast()\">Letzte Eingabe löschen</button>";
+    randomNumber1 =  Math.floor(Math.random() * 100);
+    randomNumber2 =  Math.floor(Math.random() * 1000);
+    
+    function randomExerciseType(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+        
+    }
+    console.log(exercise = randomExerciseType(1,3));
+    
+    if(exercise == 1){
+        document.getElementById('exercise').innerHTML = "" + randomNumber1 + " + " + randomNumber2 + " = "+"<input type=\"text\" name=\"result\" id=\"result\"><button class=\"btn\" style=\"background-color:#00868b\" onClick=\"playSound()\"><i class=\"bi bi-mic-fill\"></i></button><button class=\"btn btn-danger\" onClick=\"deleteLast()\">Letzte Eingabe löschen</button>";
+        console.log("Addition");
+    }
+    else{
+        if(randomNumber1 < randomNumber2){
+            [randomNumber1, randomNumber2] = [randomNumber2, randomNumber1];
+        }
+        document.getElementById('exercise').innerHTML = "" + randomNumber1 + " - " + randomNumber2 + " = "+"<input type=\"text\" name=\"result\" id=\"result\"><button class=\"btn\" style=\"background-color:#00868b\" onClick=\"playSound()\"><i class=\"bi bi-mic-fill\"></i></button><button class=\"btn btn-danger\" onClick=\"deleteLast()\">Letzte Eingabe löschen</button>";
+        console.log("Subtraktion");
+    }
+
+
 }
 hundreds.addEventListener('dragstart', dragStartHundreds);
 hundreds.addEventListener('dragend', dragEndHundreds);
@@ -122,13 +144,34 @@ function addToCountField(selectedRow) {
 function submitBtnClicked() {
     var solutionText = "";
     document.getElementById("myModal").style.display = "block";
-    if(totalNumber === randomNumber) {
+    var resNumber = randomNumber1 + randomNumber2;
+    
+    var result = parseInt(document.getElementById("result").value); //Input wird als integer wert zurückgegeben
+    console.log(result);
+
+    //richtige Lösung
+    if(totalNumber === resNumber && resNumber == result) {
         solutionText = "Das ist richtig :)";
         document.getElementById("closeBtn").innerHTML = "Nächste Aufgabe!";
         solutionIsCorrect = true;
-    } else {
+    } 
+    //richtige Zahl gelegt, aber Ergebnis falsch
+    else if(totalNumber === resNumber && totalNumber != result) {
+        solutionText = "Du hast die Anzahl richtig gelegt, aber dein Ergebnis falsch eingetragen. Versuch es noch einmal.";
+        document.getElementById("closeBtn").innerHTML = "Nochmal probieren";
+        solutionIsCorrect = false;
+    }
+    //falsche Zahl gelegt, aber Ergebnis richtig eingetragen
+    else if (totalNumber !== resNumber && resNumber == result){
+        solutionText = "Dein Ergebnis ist richtig, aber du hast " + hundredCounter + " Hunderter, " + tensCounter + " Zehner und " + onesCounter + " Einer genommen und die Zahl " + totalNumber +
+        " dargestellt. Du solltest aber die Zahl " + resNumber + " darstellen. Versuch es noch einmal.";
+        document.getElementById("closeBtn").innerHTML = "Nochmal probieren";
+        solutionIsCorrect = false;
+    }
+    //beides falsch
+    else if(totalNumber !== resNumber && resNumber != result){
         solutionText = "Du hast " + hundredCounter + " Hunderter, " + tensCounter + " Zehner und " + onesCounter + " Einer genommen und die Zahl " + totalNumber +
-        " dargestellt. Du solltest aber die Zahl " + randomNumber + " darstellen. Versuch es noch einmal.";
+        " dargestellt. Du solltest aber die Zahl " + resNumber + " darstellen. Dein Ergebnis ist leider auch falsch. Versuch es noch einmal.";
         document.getElementById("closeBtn").innerHTML = "Nochmal probieren";
         solutionIsCorrect = false;
     }

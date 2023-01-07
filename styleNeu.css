@@ -1,0 +1,153 @@
+#draggableHundreds { 
+    background-image: url("img/Hunderterpunktfeld.jpg");
+    position: relative;
+    background-size: 200px;
+    height: 200px;
+    width: 200px;
+	top: 20px;
+    left: 35%;
+    cursor: move;
+    float: left; 
+}
+#draggableTens {
+    background-image: url("img/Zehnerstreifen.jpg");
+    position: relative;
+    background-size: 200px;
+    height: 24px;
+    width: 200px;
+    top: 55%;
+    left: 35%;
+    cursor: move;
+}
+#draggableOnes {
+    background-image: url("img/Punkt.jpg");
+    position: relative;
+    background-size: 20px;
+    height: 20px;
+    width: 20px;
+    top: 65%;
+    left: 51%;
+    cursor: move;
+}
+
+.container{
+	max-width: 1800px;
+}
+
+
+#droppable { 
+    height: 90%;
+    width: 90%;
+    background-color: #ebebeb;
+    padding-top: 20px;
+    padding-right: 10px;
+}
+
+body {
+    font-family: "GrundschriftRegular";
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.col-4 {
+    background-color: #ebebeb;
+    height: 500px;
+    margin-top: 58px;
+}
+
+.col-8{
+    height: 820px;
+	width: 1200px;
+}
+
+h2{
+    margin-top: 10px;
+	margin-right: 60px;
+}
+
+.draggable-hundreds {
+	background-image: url("img/Hunderterpunktfeld.jpg");
+    background-size: 200px;
+    height: 200px;
+    width: 200px;
+    cursor: move;
+    float: left;
+}
+.draggable-tens {
+    background-image: url("img/Zehnerstreifen.jpg");
+    background-size: 200px;
+    height: 20px;
+    width: 200px;
+    top: 70%;
+    left: 25%;
+    cursor: move;
+}
+.draggable-ones {
+    background-image: url("img/Punkt.jpg");
+    background-size: 20px;
+    height: 20px;
+    width: 20px;
+    top: 70%;
+    left: 45%;
+    cursor: move;
+}
+.bi-trash {
+	font-size: 60px;
+	position: absolute;
+	margin-top: 575px;
+	left: 1010px;
+	color: rgb(145, 0, 0);
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    text-align: center;
+    background-color: #bcfdff;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 5px solid  #00868b;
+    width: 52%; /* Could be more or less, depending on screen size */
+  }
+
+  /* The Close Button */
+  .close {
+    background-color: rgb(17, 192, 84);
+    color: rgb(0, 0, 0);
+    float: none;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .left-icon-holder {
+    position:relative;
+}
+.left-icon-holder .bi {
+    position:absolute;
+    line-height: 24px;
+    top:50%;
+    margin-top: -12px; /* Half of line height to keep left middle postion of container */
+    left: 10px;
+}
+
+#submitBtn{
+	top: 430px;
+	right: 256px;
+}
+#refreshBtn {
+	top: 430px;
+	right: 256px;
+}
