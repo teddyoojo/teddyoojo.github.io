@@ -89,10 +89,10 @@ var delete_ids = [
 
 var TausenderId = document.querySelector("#imgTausender");
 var HunderterId = document.querySelector("#imgHunderter");
-if (maxValue < 101) {
+if (maxValue < 100) {
   HunderterId.style.display = "none";
   TausenderId.style.display = "none";
-} else if (maxValue < 1001) {
+} else if (maxValue < 1000) {
   TausenderId.style.display = "none";
 }
 
