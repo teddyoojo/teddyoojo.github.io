@@ -21,6 +21,15 @@
 
   --left-up-height:30%;
   --left-up-width: 100%;
+
+  --left-down-height2:75%;
+  --left-down-height2:70%;
+
+  --left-up-height2:25%;
+  --left-up-width2: 100%;
+
+  --left-up-height2:30%;
+  --left-up-width2: 100%;
  
   --left-merge-height:100%;
   --left-merge-width:80%;
@@ -156,6 +165,18 @@ body{
     background-color: var(--undo-button-color);
     font-size: 11px;
   }
+  .up{
+    display: flex;
+    height: var(--left-up-height3);
+    width: var(--left-up-width3);
+  }
+  .down{
+    background-color: var(--theme-color2);
+    height: var(--left-down-height3);
+    width: var(--left-down-width);
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+  }
 }
 
 @media screen and (max-width: 1500px) and (min-width: 1000px) {
@@ -175,6 +196,18 @@ body{
       background-color: var(--undo-button-color);
       font-size: 19px;
     }
+    .up{
+      display: flex;
+      height: var(--left-up-height2);
+      width: var(--left-up-width2);
+    }
+    .down{
+      background-color: var(--theme-color2);
+      height: var(--left-down-height2);
+      width: var(--left-down-width);
+      border-bottom-left-radius: 2em;
+      border-bottom-right-radius: 2em;
+    }
 }
 
 @media screen and (min-width: 1501px) {
@@ -193,7 +226,20 @@ body{
     background-color: var(--undo-button-color);
     font-size: 25px;
   }
+  .up{
+    display: flex;
+    height: var(--left-up-height);
+    width: var(--left-up-width);
+  }
+  .down{
+    background-color: var(--theme-color2);
+    height: var(--left-down-height);
+    width: var(--left-down-width);
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+  }
 }
+
 
 .header-right{
   display: flex;
@@ -281,11 +327,6 @@ button {
   box-shadow: var(--box-shadow);
   border-radius: 2em;
 }
-.up{
-  display: flex;
-  height: var(--left-up-height);
-  width: var(--left-up-width);
-}
 .dropBox-merge{
   background-color:var(--dropBox-merge-area);
   height: var(--left-merge-height);
@@ -325,13 +366,6 @@ button {
   -ms-user-select: none;
 }
 
-.down{
-  background-color: var(--theme-color2);
-  height: var(--left-down-height);
-  width: var(--left-down-width);
-  border-bottom-left-radius: 2em;
-  border-bottom-right-radius: 2em;
-}
 
 /* rightside images representing draggable boxes */
 
