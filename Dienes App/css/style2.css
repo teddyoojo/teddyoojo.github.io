@@ -144,17 +144,54 @@ body{
   .headerText{
     font-size:12px;
   }
+  #valuebtn {
+    background-color: var(--start-button-color);
+    font-size: 14px;
+  }
+  #checkbtn {
+    background-color: var(--check-button-color);
+    font-size: 14px;
+  }
+  #undobtn {
+    background-color: var(--undo-button-color);
+    font-size: 11px;
+  }
 }
 
 @media screen and (max-width: 1500px) and (min-width: 1000px) {
     .headerText{
       font-size:18px;
     }
+
+    #valuebtn {
+      background-color: var(--start-button-color);
+      font-size: 23px;
+    }
+    #checkbtn {
+      background-color: var(--check-button-color);
+      font-size: 23px;
+    }
+    #undobtn {
+      background-color: var(--undo-button-color);
+      font-size: 19px;
+    }
 }
 
 @media screen and (min-width: 1501px) {
   .headerText{
     font-size:28px;
+  }
+  #valuebtn {
+    background-color: var(--start-button-color);
+    font-size: 30px;
+  }
+  #checkbtn {
+    background-color: var(--check-button-color);
+    font-size: 30px;
+  }
+  #undobtn {
+    background-color: var(--undo-button-color);
+    font-size: 25px;
   }
 }
 
@@ -205,18 +242,6 @@ button {
   border-radius: 0.5em;
   box-shadow: var(--box-shadow)
 
-}
-#valuebtn {
-  background-color: var(--start-button-color);
-  font-size: 30px;
-}
-#checkbtn {
-  background-color: var(--check-button-color);
-  font-size: 30px;
-}
-#undobtn {
-  background-color: var(--undo-button-color);
-  font-size: 25px;
 }
 #readbtn{
   background-color: var(--read-button-color);
