@@ -142,7 +142,7 @@ $("#down").droppable({
       //if the user already clicked on check button once and want to correct answer show the random number only just like beginning
       if (show_start_text) {
         firstLine.html(
-          `<span class="black-line-mid"> Stelle die Zahl </span><span class="color-line-big">${random} </span><span class="black-line-mid"> mit den Materialien dar! </span>`
+          `<span class="headerText"> Stelle die Zahl <span style="color:green" class="headerText">${random} </span> mit den Materialien dar! </span>`
         );
         random_number.html(``);
         secondLine.html(``);
@@ -206,7 +206,7 @@ $("#dropbox-merge").droppable({
         //if the user already clicked on check button once and needs to correct the answer or try to represent with lesser boxes, show the random number only (on header) just like at the beginning
         if (show_start_text) {
           firstLine.html(
-            `<span class="black-line-mid"> Stelle die Zahl </span><span class="color-line-big">${random} </span><span class="black-line-mid"> mit den Materialien dar! </span>`
+            `<span class="headerText"> Stelle die Zahl <span style="color:green" class="headerText">${random} </span> mit den Materialien dar! </span>`
           );
           random_number.html(``);
           secondLine.html(``);
@@ -238,7 +238,7 @@ $("#dropbox-merge").droppable({
         counterZehner++;
         // show the randomly generated number on header part
         firstLine.html(
-          `<span class="black-line-mid"> Stelle die Zahl </span><span class="color-line-big">${random} </span><span class="black-line-mid"> mit den Materialien dar! </span>`
+          `<span class="headerText"> Stelle die Zahl <span style="color:green" class="headerText">${random} </span> mit den Materialien dar! </span>`
         );
         $("#randomNumber").html("");
         secondLine.html("");
@@ -255,7 +255,7 @@ $("#dropbox-merge").droppable({
         counterHunderter++;
         // show the randomly generated number on header part
         firstLine.html(
-          `<span class="black-line-mid"> Stelle die Zahl </span><span class="color-line-big">${random} </span><span class="black-line-mid"> mit den Materialien dar! </span>`
+          `<span class="headerText"> Stelle die Zahl <span style="color:green" class="headerText">${random} </span> mit den Materialien dar! </span>`
         );
         $("#randomNumber").html("");
         secondLine.html("");
@@ -271,7 +271,7 @@ $("#dropbox-merge").droppable({
         counterHunderter = 0;
         // show the randomly generated number on header part
         firstLine.html(
-          `<span class="black-line-mid"> Stelle die Zahl </span><span class="color-line-big">${random} </span><span class="black-line-mid"> mit den Materialien dar! </span>`
+          `<span class="headerText"> Stelle die Zahl <span style="color:green" class="headerText">${random} </span> mit den Materialien dar! </span>`
         );
         $("#randomNumber").html("");
         secondLine.html("");
@@ -310,7 +310,7 @@ $("#dropbox-merge").droppable({
         //if the user already clicked on check button once and want to correct answer show the random number only just like beginning
         if (show_start_text) {
           firstLine.html(
-            `<span class="black-line-mid"> Stelle die Zahl </span><span class="color-line-big">${random} </span><span class="black-line-mid"> mit den Materialien dar! </span>`
+            `<span class="headerText"> Stelle die Zahl <span style="color:green" class="headerText">${random} </span> mit den Materialien dar! </span>`
           );
           random_number.html(``);
           secondLine.html(``);
@@ -489,7 +489,7 @@ function start() {
 
   // show the randomly generated number on header part
   firstLine.html(
-    `<span class="black-line-mid"> Stelle die Zahl </span><span class="color-line-big">${random} </span><span class="black-line-mid"> mit den Materialien dar! </span>`
+    `<span class="headerText"> Stelle die Zahl <span style="color:green" class="headerText">${random} </span> mit den Materialien dar! </span>`
   );
   $("#randomNumber").html("");
   secondLine.html("");
@@ -620,14 +620,14 @@ function check() {
     });
     freez_screen();
     firstLine.html(
-      `<span class="black-line-mid"> Sehr gut! du hast die richtige Zahl dargestellt.</span>`
+      `<span class="headerText"> Sehr gut! Du hast die richtige Zahl dargestellt.</span>`
     );
-    random_number.html(`<span class="black-line-mid">Die Zahl <span class="color-line-big"> ${random}</span> besteht aus, </span><span class="color-line-big" id="span4">${counter_1000_total}</span> <span class="black-line-mid" id="span4">Tausender </span>
-  <span class="color-line-big" id="span3">${counter_100_total}</span> <span class="black-line-mid" id="span3">Hunderter </span>
-  <span class="color-line-big" id="span2">${counter_10_total}</span> <span class="black-line-mid" id="span2">Zehner </span> 
-  <span class="color-line-big" id="span1">${counter_1_total}</span> <span class="black-line-mid" id="span1">Einer</span>`);
+    random_number.html(`<span style="color:#73787d" class="headerText">Die Zahl <span style="color:green" class="headerText"> ${random}</span> besteht aus <span style="color:green" class="headerText"> ${counter_1000_total}</span> Tausender
+    <span style="color:green" class="headerText"> ${counter_100_total}</span> Hunderter
+    <span style="color:green" class="headerText">${counter_10_total}</span> Zehner
+    <span style="color:green" class="headerText">${counter_1_total}</span>Einer</span>`);
     secondLine.html(
-      `<span class="black-line-mid"> Klicke auf <span class="color-line-big"> Start</span>, um eine neue Zahl zu bekommen.</span>`
+      `<span class="headerText"> Klicke auf <span style="color:green" class="headerText"> Start</span>, um eine neue Zahl zu bekommen.</span>`
     );
   } else if (random == result && !optimal_result) {
     //if the answer is correct but not optimal let the user know it. and ask to find the optimal answer.
@@ -641,27 +641,27 @@ function check() {
       visibility: "visible",
     });
     firstLine.html(
-      `<span class="black-line-mid"> Du hast die richtige Zahl <span class="color-line-big"> ${random}</span> dargestellt.</span>`
+      `<span class="headerText"> Du hast die richtige Zahl <span style="color:green" class="headerText"> ${random}</span> dargestellt.</span>`
     );
-    random_number.html(`<span class="black-line-mid">Dafür hast du <span class="color-line-big" id="span4">${counter_1000_total}</span> <span class="black-line-mid" id="span4">Tausender </span>
-  <span class="color-line-big" id="span3">${counter_100_total}</span> <span class="black-line-mid" id="span3">Hunderter </span>
-  <span class="color-line-big" id="span2">${counter_10_total}</span> <span class="black-line-mid" id="span2">Zehner </span> 
-  <span class="color-line-big" id="span1">${counter_1_total}</span> <span class="black-line-mid" id="span1">Einer</span> verwendet.</span>`);
+    random_number.html(`<span style="color:#73787d" class="headerText">Dafür hast du <span style="color:green" class="headerText">${counter_1000_total}</span> Tausender
+    <span style="color:green" class="headerText">${counter_100_total}</span> Hunderter
+    <span style="color:green" class="headerText">${counter_10_total}</span> Zehner 
+    <span style="color:green" class="headerText">${counter_1_total}</span> Einer verwendet.</span>`);
     secondLine.html(
-      `<span class="black-line-mid">Bündel und lege die Zahl <span class="color-line-big"> ${random}</span>  mit weniger Teilen.</span>`
+      `<span class="headerText">Bündel und lege die Zahl <span style="color:green" class="headerText"> ${random}</span>  mit weniger Teilen.</span>`
     );
   } else {
     // if the answer is not correct give the user a feedback and the user to try again
     show_start_text = true;
     firstLine.html(
-      `<span class="black-line-mid"> Du hast die Zahl <span class="color-line-big"> ${result}</span> dargestellt.</span>`
+      `<span class="headerText"> Du hast die Zahl <span style="color:green" class="headerText"> ${result}</span> dargestellt.</span>`
     );
-    random_number.html(`<span class="black-line-mid">Dafür hast du </span><span class="color-line-big" id="span4">${counter_1000_total}</span> <span class="black-line-mid" id="span4">Tausender </span>
-    <span class="color-line-big" id="span3">${counter_100_total}</span> <span class="black-line-mid" id="span3">Hunderter </span>
-    <span class="color-line-big" id="span2">${counter_10_total}</span> <span class="black-line-mid" id="span2">Zehner </span>
-    <span class="color-line-big" id="span1">${counter_1_total}</span> <span class="black-line-mid" id="span1">Einer</span><span class="black-line-mid"> verwendet.</span>`);
+    random_number.html(`<span style="color:#73787d" class="headerText">Dafür hast du <span style="color:green" class="headerText">${counter_1000_total}</span> Tausender
+    <span style="color:green" class="headerText">${counter_100_total}</span> Hunderter
+    <span style="color:green" class="headerText">${counter_10_total}</span> Zehner
+    <span style="color:green" class="headerText">${counter_1_total}</span> Einer verwendet.</span>`);
     secondLine.html(
-      `<span class="black-line-mid">Du solltest aber die Zahl </span><span class="color-line-big"> ${random}</span><span class="black-line-mid"> darstellen. Versuche es noch einmal.</span>`
+      `<span class="headerText">Du solltest aber die Zahl <span style="color:green" class="headerText"> ${random}</span> darstellen. Versuche es noch einmal.</span>`
     );
   }
 

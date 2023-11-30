@@ -139,12 +139,19 @@ body{
   flex-direction: column;
   background-size: contain;
 }
-.headerText{
-  font-size:28px;
+
+@media screen and (max-width: 1200px) {
+    .headerText{
+      font-size:18px;
+    }
 }
-.headerText2{
-  font-size:18px;
+
+@media screen and (min-width: 1201px) {
+  .headerText{
+    font-size:28px;
+  }
 }
+
 .header-right{
   display: flex;
   justify-content: flex-end;
