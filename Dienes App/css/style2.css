@@ -140,13 +140,13 @@ body{
   background-size: contain;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
     .headerText{
       font-size:18px;
     }
 }
 
-@media screen and (min-width: 1201px) {
+@media screen and (min-width: 1501px) {
   .headerText{
     font-size:28px;
   }
